@@ -26,7 +26,9 @@ async function bootstrap() {
 
     const thisData = context.data.values;
 
-    thisData.forEach(data => {});
+    thisData.forEach(data => {
+        console.log(data);
+    });
 }
 bootstrap();
 
