@@ -1,0 +1,51 @@
+.firework {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+  animation: rise 1.5s linear forwards;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50vh);
+  }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 10%;
+  pointer-events: none;
+  transform: scale(0);
+  animation: explode 1.5s ease-out forwards, flicker 0.4s infinite;
+  /* clip-path: polygon(50% 0%, 60% 20%, 100% 50%, 60% 80%, 50% 100%, 40% 80%, 0% 50%, 40% 20%); */
+  opacity: 0.8;
+}
+
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes explode {
+  from {
+    transform: translateY(0) scale(0);
+  }
+
+  to {
+    transform: translateY(-150px) scale(1);
+  }
+}

@@ -47,3 +47,12 @@ tr:hover {
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+
+/* 제목 스타일 */
+.table-subtitle {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
