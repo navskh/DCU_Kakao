@@ -7,7 +7,7 @@ const { client_email, private_key } = credential;
 
 import { google } from 'googleapis';
 
-async function bootstrap() {
+export async function bootstrap() {
     // json 파일을 가지고 인증할 때 다음과 같이 사용합니다.
     // scope는 spread sheet만 주었습니다.
     const authorize = new google.auth.JWT(client_email, null, private_key, [
@@ -20,17 +20,17 @@ async function bootstrap() {
     });
     // 실제 스프레드시트 내용 가져오기
     const context = await googleSheet.spreadsheets.values.get({
+        // spreadsheetId: '1pxqm76kCDFkolyGVgmGs96_ydmHDfTfQh6pqiuzFqXI',
         spreadsheetId: '1pxqm76kCDFkolyGVgmGs96_ydmHDfTfQh6pqiuzFqXI',
-        range: 'A1:H10000',
+        range: 'calc!A:H',
     });
 
     const thisData = context.data.values;
+    thisData.shift();
+    thisData.shift();
 
-    thisData.forEach(data => {
-        console.log(data);
-    });
+    return thisData;
 }
-bootstrap();
 
 /**
  * 데이터 정리는 어떻게 해줄 것이냐.
@@ -45,7 +45,7 @@ bootstrap();
  * }
  */
 
-const broList = ['이영기', '성영훈', '박태준'];
+const broList = ['이영기', '성영훈', '이정현', '박태준'];
 
 class dcu {
     constructor() {

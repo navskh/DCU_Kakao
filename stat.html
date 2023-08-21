@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예쁜 테이블 예제</title>
+  <link rel="stylesheet" type="text/css" href="stat.css">
+</head>
+
+<body>
+
+  <div class="table-title">오늘의 영적 건강을 확인하세요</div>
+  <table>
+    <!-- colgroup 이름 10%, 성경읽기 10%, OYO 35%, 기도 10%, 전도 35% -->
+    <colgroup>
+      <col style="width: 10%;">
+      <col style="width: 15%;">
+      <col style="width: 30%;">
+      <col style="width: 15%;">
+      <col style="width: 30%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>성경읽기</th>
+        <th>OYO</th>
+        <th>기도</th>
+        <th>전도</th>
+      </tr>
+    </thead>
+    <tbody id="broList">
+
+    </tbody>
+  </table>
+
+</body>
+<!-- import jQuery cdn-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="stat.js"></script>
+
+</html>
