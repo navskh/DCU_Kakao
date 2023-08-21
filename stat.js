@@ -3,7 +3,9 @@
 window.onload = async function () {
     $('#todayDate').text(`(${new Date().toLocaleDateString()})`);
     // fetch 를 localhost:3000 을 호출하여 데이터를 가져온다.
-    const response = await fetch('http://localhost:3000');
+    const response = await fetch(
+        'https://dcustats-02545af8aae9.herokuapp.com/',
+    );
     const data = await response.json();
     console.log(data);
     for (let i = 0; i < 2; i++) {
