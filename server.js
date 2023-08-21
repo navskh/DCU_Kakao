@@ -2,7 +2,7 @@ import express from 'express';
 import { bootstrap } from './google-api.js';
 
 const app = express();
-const port = 3005;
+const port = process.env.PORT || 3000;
 
 // cors 를 허용해준다.
 // import cors
