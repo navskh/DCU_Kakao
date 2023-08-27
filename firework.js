@@ -1,6 +1,6 @@
-document.addEventListener('click', function (event) {
-    createFirework(event.clientX, event.clientY);
-});
+// document.addEventListener('click', function (event) {
+//     createFirework(event.clientX, event.clientY);
+// });
 
 function createFirework(x, y) {
     const firework = document.createElement('div');

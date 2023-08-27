@@ -119,3 +119,70 @@
   color: #ffffff;
   /* 흰색 글씨 */
 }
+
+@media (max-width: 480px) {
+  .text-link {
+    font-size: 10px;
+    /* 글자 크기를 조금 줄입니다. */
+    padding: 1px 2px;
+    /* 패딩도 조금 줄입니다. */
+  }
+
+  .two-column {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+
+  
+  /* 대제목 */
+  .lgTitle {
+    font-size: 10px;
+    /* 글자 크기 */
+    font-weight: bold;
+    /* 글자 굵기 */
+    margin-bottom: 10px;
+    /* 아래 여백 */
+    color: #333;
+    /* 글자색 */
+  }
+
+  /* 중제목 */
+  .mdTitle {
+    font-size: 10px;
+    /* 글자 크기 */
+    font-weight: bold;
+    /* 글자 굵기 */
+    margin-bottom: 10px;
+    /* 아래 여백 */
+    color: #555;
+    /* 글자색 */
+  }
+
+  /* 소제목 */
+  .smTitle {
+    font-size: 10px;
+    /* 글자 크기 */
+    font-weight: semi-bold;
+    /* 글자 굵기 (일부 폰트에서 지원되지 않을 수 있음) */
+    margin-bottom: 5px;
+    /* 아래 여백 */
+    color: #777;
+    /* 글자색 */
+  }
+
+  .logo {
+    font-size: 0.7rem;
+    /* 글자 크기를 조금 줄입니다. */
+  }
+  .menu {
+    font-size: 0.7rem;
+    /* 글자 크기를 조금 줄입니다. */
+  }
+
+  .table-title {
+    font-size: 15px;
+    /* 글자 크기를 조금 줄입니다. */
+  }
+
+}
