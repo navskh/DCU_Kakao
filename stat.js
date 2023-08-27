@@ -34,8 +34,8 @@ function makeDCU(data) {
         $('#broList').append(`<tr>
           <td>${element[0]}</td>
           <td>${thisBR}</td>
-          <td style="font-size: 25px">${thisOYO.join('-')}</td>
-          <td style="font-size: 25px">${prayer}</td>
+          <td class='emoji'>${thisOYO.join('-')}</td>
+          <td class='emoji'>${prayer}</td>
           <td>${thisEV.join('-')}</td>
         </tr>`);
     });
