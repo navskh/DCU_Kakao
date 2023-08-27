@@ -1,22 +1,3 @@
-// jQuery로 table의 행을 클릭하면 해당 행의 정보를 가져와서 modal에 뿌려준다.
-
-window.onload = async function () {
-    $('#todayDate').text(`(${new Date().toLocaleDateString()})`);
-    // fetch 를 localhost:3000 을 호출하여 데이터를 가져온다.
-    const response = await fetch(
-        'https://dcustats-02545af8aae9.herokuapp.com/',
-    );
-    const data = await response.json();
-    console.log(data);
-    for (let i = 0; i < 2; i++) {
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
-        createFirework(x, y);
-    }
-
-    makeDCU(data);
-};
-
 function isDidIt(x) {
     return x != '' && x != '#N/A';
 }

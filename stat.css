@@ -15,11 +15,11 @@ table {
 } */
 
 th {
-  background-color: #119ce2;  
-  color: #ffffff;  
+  background-color: #119ce2;
+  color: #ffffff;
   padding: 10px 15px;
   border: 1px solid #ddd;
-} 
+}
 
 /* 테이블 body 스타일 */
 td {
@@ -55,4 +55,40 @@ tr:hover {
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
+}
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #119ce2;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #e7f3fc;  /* 약간 밝게 조절된 색상으로 hover 효과를 주었습니다. */
 }

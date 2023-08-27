@@ -7,39 +7,110 @@
   <link rel="icon" href="favicon.png">
   <title>DCU_STATS</title>
   <link rel="stylesheet" type="text/css" href="stat.css">
+  <link rel="stylesheet" type="text/css" href="dep.css">
   <link rel="stylesheet" type="text/css" href="firework.css">
 </head>
 
 <body>
-
-  <div class="table-title">오늘의 영적 건강을 확인하세요</div>
-  <div id="todayDate" class="table-subtitle"></div>
-  <table>
-    <colgroup>
-      <col style="width: 10%;">
-      <col style="width: 15%;">
-      <col style="width: 30%;">
-      <col style="width: 15%;">
-      <col style="width: 30%;">
-    </colgroup>
-    <thead>
-      <tr>
-        <th>이름</th>
-        <th>성경읽기</th>
-        <th>OYO</th>
-        <th>기도</th>
-        <th>전도</th>
-      </tr>
-    </thead>
-    <tbody id="broList">
-
-    </tbody>
-  </table>
+  <header>
+    <div class="logo"><img src="./favicon.png" width="45px" /> About DCU </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="#" onclick="menuClick(1)">오늘의 DCU</a></li>
+        <li><a href="#" onclick="menuClick(2)">오늘의 DEP</a></li>
+        <!-- <li><a href="#">주간 DCU 통계</a></li> -->
+      </ul>
+    </nav>
+  </header>
+  <section id="todayDCU">
+    <div class="table-title">오늘의 영적 건강을 확인하세요</div>
+    <div id="todayDate" class="table-subtitle"></div>
+    <table>
+      <colgroup>
+        <col style="width: 10%;">
+        <col style="width: 15%;">
+        <col style="width: 30%;">
+        <col style="width: 15%;">
+        <col style="width: 30%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>성경읽기</th>
+          <th>OYO</th>
+          <th>기도</th>
+          <th>전도</th>
+        </tr>
+      </thead>
+      <tbody id="broList">
+      </tbody>
+    </table>
+  </section>
+  <section id="todayDEP">
+    <div class="table-title" id="depTitle">DEP Check List</div>
+    <div class="two-column">
+      <div class="column">
+        <ul id="depFirst">
+        </ul>
+      </div>
+      <div class="column">
+        <ul id="depSecond">
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalTitle" style="font-weight: bold;"></div>
+      <div id="modalVerse" style="font-weight: 500;"></div>
+      <p id="modalText">모달의 내용입니다.</p>
+    </div>
+  </div>
 
 </body>
 <!-- import jQuery cdn-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="stat.js"></script>
 <script src="firework.js"></script>
+<script src="dep.js"></script>
+<script>
+  // jQuery로 table의 행을 클릭하면 해당 행의 정보를 가져와서 modal에 뿌려준다.
+
+  window.onload = async function () {
+    menuClick(2);
+    $('#todayDate').text(`(${new Date().toLocaleDateString()})`);
+    // fetch 를 localhost:3000 을 호출하여 데이터를 가져온다.
+    const response = await fetch(
+      'https://dcustats-02545af8aae9.herokuapp.com/',
+    );
+    const data = await response.json();
+    console.log(data);
+    for (let i = 0; i < 2; i++) {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      createFirework(x, y);
+    }
+
+    makeDCU(data);
+
+    // menu는 기본 1로 세팅
+
+    loadDEP();
+  };
+
+
+  function menuClick(index) {
+    if (index == 1) {
+      $("#todayDCU").show();
+      $("#todayDEP").hide();
+    } else if (index == 2) {
+      $("#todayDCU").hide();
+      $("#todayDEP").show();
+    }
+  }
+
+</script>
 
 </html>
