@@ -19,19 +19,31 @@ app.get('/dep', async (req, res) => {
     const givenDate = new Date('2023-08-28');
     // 현재 날짜
     const currentDate = new Date();
-    // 두 날짜 사이의 밀리초 차이
-    const differenceInMilliseconds = currentDate - givenDate;
-    // 밀리초를 일로 변환 (1일 = 24시간 = 1440분 = 86400초 = 86400000밀리초)
-    const differenceInDays =
-        Math.floor(differenceInMilliseconds / 86400000) + 1;
+
+    let differenceInDays = 0;
+    for (
+        let d = new Date(givenDate);
+        d <= currentDate;
+        d.setDate(d.getDate() + 1)
+    ) {
+        const dayOfWeek = d.getDay(); // 0 (Sunday) ~ 6 (Saturday)
+        if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+            // 제외: 0 (일요일), 6 (토요일)
+            differenceInDays++;
+        }
+    }
 
     let thisIndex = differenceInDays % 24;
     if (thisIndex == 0) thisIndex = 24;
 
-    const thisDep = await import(`./dep/DEP${thisIndex}일차.json`, {
-        assert: { type: 'json' },
-    });
-    res.send(thisDep);
+    try {
+        const thisDep = await import(`./dep/DEP${thisIndex}일차.json`, {
+            assert: { type: 'json' },
+        });
+        res.send(thisDep);
+    } catch (error) {
+        res.status(500).send({ message: 'Error loading the JSON file.' });
+    }
 });
 
 app.listen(port, () => {
