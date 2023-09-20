@@ -2,8 +2,10 @@ async function loadDEP() {
     const response = await fetch(
         'https://dcustats-02545af8aae9.herokuapp.com/dep',
     );
+    // const response = await fetch('http://localhost:3000/dep');
     const data = await response.json();
 
+    console.log(data);
     // 주말인 경우 처리
     if (data.isWeekend) {
         $('#depTitle').text('오늘은 쉽니다');

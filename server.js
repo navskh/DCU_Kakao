@@ -16,9 +16,16 @@ app.get('/', async (req, res) => {
 
 app.get('/dep', async (req, res) => {
     // 주어진 날짜 설정
-    const givenDate = new Date('2023-08-28');
+    const givenDate = new Date('2023-09-21');
     // 현재 날짜
     const currentDate = new Date();
+    const dayOfWeek = currentDate.getDay();
+
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+        // 주말인 경우
+        res.send({ isWeekend: true });
+        return;
+    }
 
     let differenceInDays = 0;
     for (
@@ -26,12 +33,8 @@ app.get('/dep', async (req, res) => {
         d <= currentDate;
         d.setDate(d.getDate() + 1)
     ) {
-        const dayOfWeek = d.getDay(); // 0 (Sunday) ~ 6 (Saturday)
-        if (dayOfWeek === 0 || dayOfWeek === 6) {
-            // 주말인 경우
-            res.send({ isWeekend: true });
-            return;
-        } else {
+        const checkWeek = d.getDay(); // 0 (Sunday) ~ 6 (Saturday)
+        if (checkWeek !== 0 && checkWeek !== 6) {
             // 제외: 0 (일요일), 6 (토요일)
             differenceInDays++;
         }
