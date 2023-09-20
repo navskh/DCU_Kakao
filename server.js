@@ -27,7 +27,11 @@ app.get('/dep', async (req, res) => {
         d.setDate(d.getDate() + 1)
     ) {
         const dayOfWeek = d.getDay(); // 0 (Sunday) ~ 6 (Saturday)
-        if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+            // 주말인 경우
+            res.send({ isWeekend: true });
+            return;
+        } else {
             // 제외: 0 (일요일), 6 (토요일)
             differenceInDays++;
         }

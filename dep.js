@@ -4,6 +4,13 @@ async function loadDEP() {
     );
     const data = await response.json();
 
+    // 주말인 경우 처리
+    if (data.isWeekend) {
+        $('#depTitle').text('오늘은 쉽니다');
+        // 혹은 다른 표시 방법도 가능
+        return; // 추가 로직을 실행하지 않고 종료
+    }
+
     parseDEP(data?.default);
 }
 
